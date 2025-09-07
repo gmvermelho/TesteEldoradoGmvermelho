@@ -1,0 +1,34 @@
+name: Android CD - Firebase Deploy
+
+on:
+  workflow_run:
+    workflows: ["Android CI - Continuous Integration"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact from CI workflow
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: android-ci.yml
+          name: app-debug-apk
+          run_id: ${{ github.event.workflow_run.id }}
+
+      - name: Verify APK and variables
+        run: |
+          echo "APP_ID: 1:878713812338:android:b80512149ee9ed8f6fd9eb"
+          echo "APK size: $(du -h app-debug.apk)"
+          echo "APK type: $(file app-debug.apk)"
+
+      - name: Deploy to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: "1:878713812338:android:b80512149ee9ed8f6fd9eb"  # ← USE ESTE!
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_CREDENTIALS }}
+          testers: 'richardc.duarte@hotmail.com,gmvermelho@gmail.com'
+          file: app-debug.apk
+          debug: true

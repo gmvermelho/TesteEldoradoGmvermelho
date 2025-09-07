@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
+dimen margin_value
+drawable ic_launcher_background
+drawable screen_1
+drawable screen_2
+drawable screen_3
+drawable screen_4
+id btnTheme
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string choose_theme_text
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string project_id
+string txt_change_theme
+string txt_title
+style AppTheme
+xml backup_rules
+xml data_extraction_rules
+xml pref

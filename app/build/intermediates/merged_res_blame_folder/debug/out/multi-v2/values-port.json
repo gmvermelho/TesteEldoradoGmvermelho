@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.halil.ozel.darkmode.app-mergeDebugResources-42:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sora\\.gradle\\caches\\transforms-3\\d8c70bfc3ec0a1e8ea647b269f3ae300\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

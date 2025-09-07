@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">878713812338</string>
+    <string name="google_api_key" translatable="false">AIzaSyCTAPjFj25Tynb3dcAimgPc_finaoxXz-Q</string>
+    <string name="google_app_id" translatable="false">1:878713812338:android:b80512149ee9ed8f6fd9eb</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCTAPjFj25Tynb3dcAimgPc_finaoxXz-Q</string>
+    <string name="google_storage_bucket" translatable="false">eldoradoteste-58618.firebasestorage.app</string>
+    <string name="project_id" translatable="false">eldoradoteste-58618</string>
+</resources>

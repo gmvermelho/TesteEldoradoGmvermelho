@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878713812338",
+    "project_id": "eldoradoteste-58618",
+    "storage_bucket": "eldoradoteste-58618.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878713812338:android:b80512149ee9ed8f6fd9eb",
+        "android_client_info": {
+          "package_name": "com.halil.ozel.darkmode"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTAPjFj25Tynb3dcAimgPc_finaoxXz-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

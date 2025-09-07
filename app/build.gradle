@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services' // Google Services Pluggin
+    id 'com.google.firebase.appdistribution' // ← ESTE ESTÁ FALTANDO!
+    id 'jacoco'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.halil.ozel.darkmode"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }  // ✅ FECHA defaultConfig
+
+
+    buildTypes {
+	debug {
+	    testCoverageEnabled = true	
+	}
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    namespace 'com.halil.ozel.darkmode'
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+
+    // Preference
+    implementation "androidx.preference:preference-ktx:1.2.1"
+    
+    
+    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:1.9.0"
+
+
+}
+
+
+firebaseAppDistribution {
+    serviceCredentialsFile = System.getenv("FIREBASE_CREDENTIALS")
+    appId = "1:157098205940:android:2d3b31d7f51362e382f4a1" // do seu google-services.json
+    testers = "richardc.duarte@hotmail.com,gmvermelho@gmail.com" // pode colocar vários separados por vírgula
+    releaseNotes = "Release automático via GitHub Actions 🚀"
+}
+
+
+
+
+
+
+jacoco {
+    toolVersion = "0.8.11"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = false
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+
+
+
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports"
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+
+    // ✅ APENAS ISSO - deixa o Jacoco descobrir automaticamente
+    executionData.setFrom(fileTree(dir: buildDir, includes: [
+        '**/*.exec',
+        '**/*.ec'
+    ]))
+}
